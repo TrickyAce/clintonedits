@@ -145,7 +145,7 @@
 
         .vidBtn {
             position: absolute;
-            bottom: 10px;
+            bottom: 50px;
             right: 10px;
         }
 
@@ -191,7 +191,7 @@
 
         .typing-text {
             font-family: 'Segoe UI', 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 3rem;
@@ -692,7 +692,17 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #8f9db8 0%, #9494a0 100%);
+        }
+
+        .contact-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #7a0e88 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-content {
@@ -703,7 +713,7 @@
 
         .contact-text {
             font-size: 1.2rem;
-            color: #94a3b8;
+            color: #03102e;
             margin-bottom: 3rem;
         }
 
@@ -720,7 +730,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(103, 6, 194, 0.432);
             border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 50px;
             color: #ffffff;
@@ -743,7 +753,7 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(3, 12, 61, 0.473);
             border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 50%;
             display: flex;
@@ -794,6 +804,13 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* footer */
+        footer {
+            padding: 20px;
+            font-size: 12px;
+            text-align: center;
         }
 
         /* Responsive Design */
