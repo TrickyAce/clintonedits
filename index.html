@@ -13,6 +13,7 @@
             box-sizing: border-box;
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body>
     <!-- Navigation -->
@@ -36,22 +37,24 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-        <div class="hero-content">
-            <h1>We Build Done-For-You Content Systems That Actually Convert</h1>
-            <p class="subtitle">Get high-quality, consistent YouTube content without spending hours on a single video. Premium video editing for creators who give a damn about results.</p>
+        <video autoplay muted loop id="heroVideo">
+            <source src="hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content"> 
+            <p class="typing-text"><span id="typedText"></span><span class="cursor">|</span></p>
+            <h2>We Build Done-For-You Content Systems That Actually Convert</h2>
             <a href="#contact" class="cta-button">Let's Work Together</a>
+        </div>
+        <div class="vidBtn">
+            <button id="muteBtn">🔊</button>
+            <button id="playBtn">Pause</button>
         </div>
     </section>
 
     <!-- YouTube Feature Section -->
     <section class="youtube-feature">
         <div class="youtube-content fade-in">
-            <h2 class="youtube-headline">Stop chasing leads with cold DMs and emails let your content attracts millions of views and clients</h2>
+            <h5 class="youtube-headline">Stop chasing leads with cold DMs and emails, let your content attracts millions of views and clients.</h5>
             <div class="video-container">
                 <div class="video-wrapper">
                     <iframe src="https://www.youtube.com/embed/2m_1YRTZYqs" title="Why Businesses Fail to Grow" allowfullscreen></iframe>
@@ -68,7 +71,7 @@
     <section class="how-it-works">
         <div class="how-it-works-content fade-in">
             <h2>Simple 3-step process</h2>
-            <p class="subtitle">it's really that easy</p>
+            <p class="subtitle">It's really that easy</p>
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-icon">📹</div>
@@ -193,45 +196,53 @@
 
         <!-- Thumbnails -->
 
-                <div class="work-category fade-in">
-            <h3 class="category-title">Youtube Videos ThumbNails</h3>
-            <div class="work-grid">
-                    <div class="video-wrapper">
-                        <img src="images/tn1.webp">
-                    </div>
-                    <div class="video-wrapper">
-                        <img src="images/tn2.webp">
-                    </div>
-                    <div class="video-wrapper">
-                        <img src="images/tn3.webp">
-                    </div>
-                    <div class="video-wrapper">
-                        <img src="images/tn4.webp">
-                    </div>
+        <div class="work-category fade-in">
+            <h3 class="category-title">YouTube Video Thumbnails</h3>
+
+            <div class="carousel-container">
+                <button class="carousel-arrow left" id="prevBtn">❮</button>
+
+                <div class="carousel-track" id="carouselTrack">
+                <div class="tn-wrapper"><img src="images/tn1.webp" alt=""></div>
+                <div class="tn-wrapper"><img src="images/tn2.webp" alt=""></div>
+                <div class="tn-wrapper"><img src="images/tn3.webp" alt=""></div>
+                <div class="tn-wrapper"><img src="images/tn4.webp" alt=""></div>
+                </div>
+
+                <button class="carousel-arrow right" id="nextBtn">❯</button>
             </div>
         </div>
+
     </section>
 
     <!-- Clients Section -->
+
     <section class="section clients" id="clients">
-        <h2 class="section-title fade-in">Trusted by Top Creators & Brands</h2>
-        <div class="clients-grid fade-in">
-            <div class="client-card">
-                <div class="client-logo">TB</div>
-                <p class="testimonial">"Clinton turned our boring product videos into viral content. ROI increased 300% in 3 months."</p>
-                <p class="client-name">TechBrand CEO</p>
-            </div>
-            <div class="client-card">
-                <div class="client-logo">FC</div>
-                <p class="testimonial">"Best investment we made. Clinton's edits helped us hit 1M subscribers faster than expected."</p>
-                <p class="client-name">Fitness Creator</p>
-            </div>
-            <div class="client-card">
-                <div class="client-logo">DA</div>
-                <p class="testimonial">"Professional, fast, and results-driven. Clinton understands what makes content convert."</p>
-                <p class="client-name">Digital Agency</p>
-            </div>
+    <h2 class="section-title fade-in">Trusted by Top Creators & Brands</h2>
+    
+    <!-- Swiper -->
+    <div class="swiper clients-swiper fade-in">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide client-card">
+            <div class="client-logo">TB</div>
+            <p class="testimonial">"Clinton turned our boring product videos into viral content. ROI increased 300% in 3 months."</p>
+            <p class="client-name">TechBrand CEO</p>
         </div>
+        <div class="swiper-slide client-card">
+            <div class="client-logo">FC</div>
+            <p class="testimonial">"Best investment we made. Clinton's edits helped us hit 1M subscribers faster than expected."</p>
+            <p class="client-name">Fitness Creator</p>
+        </div>
+        <div class="swiper-slide client-card">
+            <div class="client-logo">DA</div>
+            <p class="testimonial">"Professional, fast, and results-driven. Clinton understands what makes content convert."</p>
+            <p class="client-name">Digital Agency</p>
+        </div>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div class="swiper-pagination"></div>
+    </div>
     </section>
 
     <!-- About Section -->
@@ -302,7 +313,8 @@
             </div>
         </div>
     </section>
-
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

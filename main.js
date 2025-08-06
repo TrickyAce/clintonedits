@@ -4,6 +4,9 @@
             const navLinks = document.getElementById('navLinks');
             const navLinksItems = document.querySelectorAll('.nav-link');
             const nav = document.getElementById('nav');
+            const video = document.getElementById("heroVideo");
+            const playBtn = document.getElementById("playBtn");
+            const muteBtn = document.getElementById("muteBtn");
 
             // Mobile menu toggle
             mobileMenu.addEventListener('click', function() {
@@ -18,6 +21,67 @@
                     navLinks.classList.remove('active');
                 });
             });
+
+            playBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    playBtn.innerHTML = "Pause";
+                } else {
+                    video.pause();
+                    playBtn.innerHTML = "Play";
+                }
+                }
+            );
+
+            muteBtn.addEventListener('click', function() {
+                video.muted = !video.muted;
+
+                if (video.muted) {
+                    muteBtn.innerHTML = '🔊';
+                } else {
+                    muteBtn.innerHTML = '🔇';
+                }
+            });
+
+            // typing animation
+
+            const phrases = [
+  "VIDEO EDITOR",
+  "SCRIPT WRITER",
+  "THUMBNAIL DESIGNER",
+  "CONTENT CREATOR"
+];
+
+const typedText = document.getElementById("typedText");
+let phraseIndex = 0;
+let letterIndex = 0;
+let isDeleting = false;
+let delay = 100;
+
+function typeLoop() {
+  const currentPhrase = phrases[phraseIndex];
+  
+  if (isDeleting) {
+    typedText.textContent = currentPhrase.substring(0, letterIndex--);
+    delay = 50;
+  } else {
+    typedText.textContent = currentPhrase.substring(0, letterIndex++);
+    delay = 100;
+  }
+
+  if (!isDeleting && letterIndex === currentPhrase.length + 1) {
+    delay = 2000; // pause before deleting
+    isDeleting = true;
+  } else if (isDeleting && letterIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    delay = 500;
+  }
+
+  setTimeout(typeLoop, delay);
+}
+
+typeLoop();
 
             // Navigation scroll effect and active section highlighting
             const sections = document.querySelectorAll('section[id]');
@@ -163,3 +227,59 @@
                 }
             });
         });
+
+        const track = document.getElementById('carouselTrack');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function scrollNext() {
+  const itemWidth = track.children[0].offsetWidth + 16; // thumbnail + gap
+  if (track.scrollLeft + itemWidth >= track.scrollWidth - track.offsetWidth) {
+    // Loop to start
+    track.scrollTo({ left: 0, behavior: 'smooth' });
+  } else {
+    track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+  }
+}
+
+function scrollPrev() {
+  const itemWidth = track.children[0].offsetWidth + 16;
+  if (track.scrollLeft === 0) {
+    // Loop to end
+    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+  } else {
+    track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+  }
+}
+
+nextBtn.addEventListener('click', scrollNext);
+prevBtn.addEventListener('click', scrollPrev);
+
+// Swipe support (mobile)
+let startX = 0;
+
+track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', (e) => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+  if (diff > 50) scrollNext();
+  else if (diff < -50) scrollPrev();
+});
+
+  const swiper = new Swiper('.clients-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    slidesPerView: 1,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    speed: 800,
+    effect: 'slide'
+  });
